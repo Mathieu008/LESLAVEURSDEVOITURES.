@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>LES LAVEURS DE VOITURES</title>
+</head>
+<body>
+ <h1 style=" color: grey;"><center>LES LAVEURS DE VOITURES</center></h1>
+  <h4 style=" color: grey;">Bonjour et bienvenue, nous sommes deux jeunes, Mathieu et Clément, tous les deux passionnés par l'automobile. On espère un jour vivre de nos passions et nous aimons rendre service aux gens donc on se lance.</h4>
+  <h3 style=" color: grey;">Vous retrouverez sur ce site :</h3>
+  
+  <ul>
+   <li style=" color: grey;">Nos Informations</li>
+    
+    <li style=" color: grey;">Les Tarifs</li>
+    
+    <li style=" color: grey;"> Une section avis pour noter nos prestations</li>
+ </ul>
+
+  <h2 style=" color: darkblue;"><center>Nos Informations</center></h2>
+  
+  <h3 style=" color: darkblue;">Nous connaitre :</h3>
+  
+  <h5 style=" color: lightcoral;">- Mathieu PASQUET, j'ai 16ans bientôt 17. Je suis quelqu'un de très impliqué dans ce que je fais, j'adore les voitures et le handball. Les gens ont confiance en moi. </h5>
+ 
+  <h5 style=" color: royalblue;">- Clément GRATIEN--DUPUIS, j'ai 17ans. Je suis perfectioniste. Si je fais quelque chose c'est que j'aime le faire, passionné d'automobile et de handball. je suis respectueux. </h5>
+
+<h4 style=" color: darkblue;">Nous contacter</h4>
+  <p>Email : lavagseautos91@gmail.com</p>
+  <p>Numéros de téléphones : <br> - 06 52 47 63 23 <br>
+  - 07 87 11 78 45 </p>
+  
+  
+  <h2 style=" color: lightseagreen;"><center>Les tarifs</center></h2>
+
+<center>
+<table>
+ 
+  <thead>
+    <tr>
+      <th scope="col" style=" color: red;" > Formule argent    </th>
+      
+      <th scope="col" style=" color: goldenrod;" > Formule OR   <br> (extérieur)</th>
+      
+      <th scope="col" style=" color: goldenrod;"> Formule OR  <br> (intérieur)</th>
+      
+      <th scope="col" style=" color: green;">  Formule DIAMANT</th>
+    </tr>
+  </thead>
+ 
+  <tbody>
+    <tr>
+      <th scope="row" style=" color: red;" >aspirateur<br>+<br>les plastiques<br>+<br>karcher</th>
+      
+      <th scope="row" style=" color: goldenrod;" >karcher<br>+<br>contours de portes<br>+<br>jantes</th>
+      
+      <th scope="row" style=" color: goldenrod;" >aspirateur dans tout l'habitacle<br>+<br>coffre<br>+<br>les plastiques</th>
+      
+      <th scope="row" style=" color: green;" >formule extérieur<br>+<br>formule intérieur</th>
+    </tr>
+    
+  </tbody>
+ 
+  <tfoot>
+    <tr>
+     <th scope="row" style=" color: red;">30€</th>
+      
+     <th scope="row" style=" color: goldenrod;">60€</th>
+      
+     <th scope="row" style=" color: goldenrod;">60€</th>
+      
+     <th scope="row" style=" color: green;">100€</th>
+    </tr>
+  </tfoot>
+
+</table>
+</center>
+
+  
+  
+    
+    
+<style>
+  body {
+    background: -webkit-linear-gradient(#ede1d3, #fbf9f6);
+  }
+</style>
+
+  
+
+
+  <!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avis et notation</title>
+  <style>
+    /* Style simple avec HTML et CSS internes */
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f4f4f9;
+    }
+
+    .avis-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+
+    .note {
+      margin-bottom: 20px;
+    }
+
+    .rating {
+      display: flex;
+      justify-content: space-between;
+      font-size: 30px;
+    }
+
+    .car {
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    input[type="radio"]:checked + label {
+      color: gold;
+    }
+
+    label:hover {
+      transform: scale(1.2);
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 12px;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .avis-soumis {
+      margin-top: 30px;
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .avis-item {
+      margin-bottom: 15px;
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="avis-container">
+    <h2>Laissez votre avis !</h2>
+
+    <!-- Champ pour le pseudo -->
+    <input type="text" id="pseudo" placeholder="Entrez votre pseudo" />
+
+    <!-- Formulaire pour ajouter un avis -->
+    <textarea id="avis" placeholder="Écrivez votre avis ici..." rows="4" cols="50"></textarea>
+
+    <div class="note">
+      <label>Notez cette voiture :</label>
+      <div class="rating">
+        <input type="radio" id="star1" name="rating" value="1">
+        <label for="star1" class="car">🚗</label>
+
+        <input type="radio" id="star2" name="rating" value="2">
+        <label for="star2" class="car">🚗</label>
+
+        <input type="radio" id="star3" name="rating" value="3">
+        <label for="star3" class="car">🚗</label>
+
+        <input type="radio" id="star4" name="rating" value="4">
+        <label for="star4" class="car">🚗</label>
+
+        <input type="radio" id="star5" name="rating" value="5">
+        <label for="star5" class="car">🚗</label>
+      </div>
+    </div>
+
+    <button onclick="soumettreAvis()">Soumettre l'avis</button>
+
+    <div id="error-message" class="error-message"></div>
+  </div>
+
+  <div id="avis-soumis" class="avis-soumis">
+    <h3>Avis soumis :</h3>
+    <!-- Les avis seront ajoutés ici -->
+  </div>
+
+  <script>
+    // Fonction pour soumettre l'avis
+    function soumettreAvis() {
+      // Récupérer l'avis, le pseudo et la note sélectionnée
+      const pseudo = document.getElementById('pseudo').value;
+      const avis = document.getElementById('avis').value;
+      const rating = document.querySelector('input[name="rating"]:checked');
+
+      // Vérification si le pseudo a été rempli
+      if (pseudo.trim() === "") {
+        document.getElementById('error-message').innerText = "Veuillez entrer un pseudo avant de soumettre.";
+        return;
+      }
+
+      // Vérification si un avis a été écrit
+      if (avis.trim() === "") {
+        document.getElementById('error-message').innerText = "Veuillez écrire un avis avant de soumettre.";
+        return;
+      }
+
+      // Vérification si une note a été sélectionnée
+      if (!rating) {
+        document.getElementById('error-message').innerText = "Veuillez sélectionner une note avant de soumettre.";
+        return;
+      }
+
+      // Si toutes les validations passent, afficher un message de succès
+      document.getElementById('error-message').innerText = ""; // Réinitialiser le message d'erreur
+
+      // Créer un nouvel élément pour afficher l'avis, le pseudo et la note
+      const avisContainer = document.getElementById('avis-soumis');
+      const newAvis = document.createElement('div');
+      newAvis.classList.add('avis-item');
+
+      const starCount = rating.value;
+      let stars = '';
+      for (let i = 0; i < starCount; i++) {
+        stars += '🚗';
+      }
+
+      newAvis.innerHTML = `<strong>${pseudo} a donné une note de ${stars}</strong><br><p>${avis}</p>`;
+
+      // Ajouter le nouvel avis à la section "Avis soumis"
+      avisContainer.appendChild(newAvis);
+
+      // Réinitialiser le formulaire
+      document.getElementById('pseudo').value = "";
+      document.getElementById('avis').value = "";
+      document.querySelectorAll('input[name="rating"]').forEach(input => input.checked = false);
+    }
+  </script>
+
+</body>
+</html>
+
+  
+
+     
+</body>
+</html>
