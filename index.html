@@ -100,12 +100,12 @@
   <title>LES LAVEURS DE VOITURES</title>
 </head>
 <body>
-<!-- Firebase App (SDK de base) -->
+<!-- Firebase SDK -->
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js"></script>
 
 <script>
-    // 📌 Configuration Firebase (REMPLACE avec TES infos si besoin)
+    // 📌 Configuration Firebase (Vérifie bien tes identifiants Firebase)
     const firebaseConfig = {
         apiKey: "AIzaSyD59wu5-3nrcV5ds9mjesQsW0tjxoTqOp8",
         authDomain: "avis-site-58df5.firebaseapp.com",
@@ -113,7 +113,7 @@
         projectId: "avis-site-58df5",
         storageBucket: "avis-site-58df5.appspot.com",
         messagingSenderId: "410453129333",
-        appId: "410453129333"
+        appId: "1:410453129333:web:xxxxxx"
     };
 
     // 📌 Initialisation de Firebase
@@ -133,7 +133,7 @@
 
         document.getElementById('error-message').innerText = "";
 
-        // 📌 Objet avis
+        // 📌 Objet avis à envoyer
         const newAvis = {
             pseudo: pseudo,
             avis: avis,
@@ -141,7 +141,13 @@
         };
 
         // 📌 Envoi à Firebase
-        database.ref("avis").push(newAvis);
+        database.ref("avis").push(newAvis, function(error) {
+            if (error) {
+                console.error("Erreur lors de l'envoi :", error);
+            } else {
+                console.log("Avis ajouté avec succès !");
+            }
+        });
 
         // Réinitialisation du formulaire
         document.getElementById('pseudo').value = "";
@@ -167,9 +173,10 @@
         });
     }
 
-    // 📌 Charger les avis au démarrage
+    // 📌 Charger les avis au chargement de la page
     window.onload = chargerAvis;
 </script>
+
 </body>
 </html> 
 
