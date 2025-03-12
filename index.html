@@ -90,95 +90,201 @@
 </style>
  
   
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <title>LES LAVEURS DE VOITURES</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avis et notation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        .avis-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin: 0 auto;
+        }
+        h2, h3 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        .note {
+            margin-bottom: 20px;
+        }
+        .rating {
+            display: flex;
+            justify-content: space-between;
+            font-size: 30px;
+        }
+        .car {
+            cursor: pointer;
+        }
+        input[type="radio"] {
+            display: none;
+        }
+        input[type="radio"]:checked + label {
+            color: gold;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .error-message {
+            color: red;
+            font-size: 12px;
+            text-align: center;
+        }
+        .avis-soumis {
+            margin-top: 30px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .avis-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
-<!-- Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js"></script>
 
-<script>
-    // 📌 Configuration Firebase (Vérifie bien tes identifiants Firebase)
-    const firebaseConfig = {
-        apiKey: "AIzaSyD59wu5-3nrcV5ds9mjesQsW0tjxoTqOp8",
-        authDomain: "avis-site-58df5.firebaseapp.com",
-        databaseURL: "https://avis-site-58df5-default-rtdb.firebaseio.com",
-        projectId: "avis-site-58df5",
-        storageBucket: "avis-site-58df5.appspot.com",
-        messagingSenderId: "410453129333",
-        appId: "1:410453129333:web:xxxxxx"
-    };
+    <div class="avis-container">
+        <h2>Laissez votre avis !</h2>
+        <input type="text" id="pseudo" placeholder="Entrez votre pseudo">
+        <textarea id="avis" placeholder="Écrivez votre avis ici..." rows="4"></textarea>
 
-    // 📌 Initialisation de Firebase
-    firebase.initializeApp(firebaseConfig);
-    const database = firebase.database();
+        <div class="note">
+            <label>Notez cette voiture :</label>
+            <div class="rating">
+                <input type="radio" id="star1" name="rating" value="1">
+                <label for="star1" class="car">🚗</label>
 
-    // 📌 Fonction pour soumettre un avis
-    function soumettreAvis() {
-        const pseudo = document.getElementById('pseudo').value.trim();
-        const avis = document.getElementById('avis').value.trim();
-        const rating = document.querySelector('input[name="rating"]:checked');
+                <input type="radio" id="star2" name="rating" value="2">
+                <label for="star2" class="car">🚗</label>
 
-        if (!pseudo || !avis || !rating) {
-            document.getElementById('error-message').innerText = "Veuillez remplir tous les champs avant de soumettre.";
-            return;
-        }
+                <input type="radio" id="star3" name="rating" value="3">
+                <label for="star3" class="car">🚗</label>
 
-        document.getElementById('error-message').innerText = "";
+                <input type="radio" id="star4" name="rating" value="4">
+                <label for="star4" class="car">🚗</label>
 
-        // 📌 Objet avis à envoyer
-        const newAvis = {
-            pseudo: pseudo,
-            avis: avis,
-            note: rating.value
+                <input type="radio" id="star5" name="rating" value="5">
+                <label for="star5" class="car">🚗</label>
+            </div>
+        </div>
+
+        <button onclick="soumettreAvis()">Soumettre l'avis</button>
+        <div id="error-message" class="error-message"></div>
+    </div>
+
+    <div id="avis-soumis" class="avis-soumis">
+        <h3>Avis soumis :</h3>
+    </div>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js"></script>
+
+    <script>
+        // Configuration Firebase (REMPLACE avec TES INFOS !)
+        const firebaseConfig = {
+            apiKey: "AIzaSyD59wu5-3nrcV5ds9mjesQsW0tjxoTqOp8",
+            authDomain: "avis-site-58df5.firebaseapp.com",
+            databaseURL: "https://avis-site-58df5-default-rtdb.firebaseio.com",
+            projectId: "avis-site-58df5",
+            storageBucket: "avis-site-58df5.appspot.com",
+            messagingSenderId: "410453129333",
+            appId: "1:410453129333:web:xxxxxx"
         };
 
-        // 📌 Envoi à Firebase
-        database.ref("avis").push(newAvis, function(error) {
-            if (error) {
-                console.error("Erreur lors de l'envoi :", error);
-            } else {
-                console.log("Avis ajouté avec succès !");
+        // Initialisation Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // Fonction pour soumettre un avis
+        function soumettreAvis() {
+            const pseudo = document.getElementById('pseudo').value.trim();
+            const avis = document.getElementById('avis').value.trim();
+            const rating = document.querySelector('input[name="rating"]:checked');
+
+            if (!pseudo || !avis || !rating) {
+                document.getElementById('error-message').innerText = "Veuillez remplir tous les champs avant de soumettre.";
+                return;
             }
-        });
 
-        // Réinitialisation du formulaire
-        document.getElementById('pseudo').value = "";
-        document.getElementById('avis').value = "";
-        document.querySelectorAll('input[name="rating"]').forEach(input => input.checked = false);
-    }
+            document.getElementById('error-message').innerText = "";
 
-    // 📌 Fonction pour charger les avis dynamiquement
-    function chargerAvis() {
-        const avisContainer = document.getElementById('avis-soumis');
-        avisContainer.innerHTML = "<h3>Avis soumis :</h3>";
+            const newAvis = {
+                pseudo: pseudo,
+                avis: avis,
+                note: rating.value
+            };
 
-        database.ref("avis").on("child_added", function(snapshot) {
-            const avis = snapshot.val();
-            const newAvis = document.createElement('div');
-            newAvis.classList.add('avis-item');
+            // Envoi à Firebase
+            database.ref("avis").push(newAvis)
+            .then(() => {
+                console.log("Avis ajouté !");
+                afficherAvis(newAvis);
+            })
+            .catch(error => console.error("Erreur Firebase:", error));
+
+            // Réinitialisation du formulaire
+            document.getElementById('pseudo').value = "";
+            document.getElementById('avis').value = "";
+            document.querySelectorAll('input[name="rating"]').forEach(input => input.checked = false);
+        }
+
+        // Fonction pour afficher un avis
+        function afficherAvis(avis) {
+            const avisContainer = document.getElementById('avis-soumis');
+            const newAvisDiv = document.createElement('div');
+            newAvisDiv.classList.add('avis-item');
 
             let stars = '🚗'.repeat(avis.note);
 
-            newAvis.innerHTML = `<strong>${avis.pseudo} a donné une note de ${stars}</strong><br><p>${avis.avis}</p>`;
+            newAvisDiv.innerHTML = `<strong>${avis.pseudo} a donné une note de ${stars}</strong><br><p>${avis.avis}</p>`;
+            avisContainer.appendChild(newAvisDiv);
+        }
 
-            avisContainer.appendChild(newAvis);
-        });
-    }
+        // Charger les avis existants au démarrage
+        function chargerAvis() {
+            database.ref("avis").on("child_added", function(snapshot) {
+                afficherAvis(snapshot.val());
+            });
+        }
 
-    // 📌 Charger les avis au chargement de la page
-    window.onload = chargerAvis;
-</script>
+        window.onload = chargerAvis;
+    </script>
 
 </body>
-</html> 
+</html>
 
   
 
